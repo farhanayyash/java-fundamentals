@@ -3,7 +3,77 @@
  */
 package basiclibrary;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.Arrays.*;
+
 public class Library {
+    public static void main(String[] args) {
+
+        getall();
+    }
+
+    public static String[] setmaxandmin(){
+        Set<Integer> setnumbers = new HashSet<Integer>();
+
+        for (int[] i : weeklyMonthTemperatures){
+            for(int j :i){
+                setnumbers.add(j);
+            }
+        }
+        String handler = Arrays.toString(setnumbers.toArray());
+        handler = handler.replace("[","");
+        handler = handler.replace("]","");
+        String[] arrOfStr = handler.split(", ");
+        Arrays.sort(arrOfStr);
+        return arrOfStr;
+    }
+    public static int getmax(){
+        String[] arr = setmaxandmin();
+        return Integer.parseInt(arr[arr.length-1]);
+    }
+    public static int getmin(){
+        String[] arr = setmaxandmin();
+        return Integer.parseInt(arr[0]);
+    }
+
+    public static int getall(){
+        String handler = Arrays.toString(setmaxandmin());
+        String[] arr = setmaxandmin();
+        int i = Integer.parseInt(arr[0]);
+        while (i !=Integer.parseInt(arr[arr.length-1]) ){
+            if (!(handler.contains(Integer.toString(i)))){
+                System.out.println("Never saw temperature: " + Integer.toString(i));
+            }
+            i++;
+        }
+        return Integer.parseInt(arr[0]);
+    }
+
+
+    public static int[][] weeklyMonthTemperatures = {
+            {66, 64, 58, 65, 71, 57, 60},
+            {57, 65, 65, 70, 72, 65, 51},
+            {55, 54, 60, 53, 59, 57, 61},
+            {65, 56, 55, 52, 55, 62, 57}
+    };
+    public static List<String> votes = new ArrayList<>();
+
+    public Library(){
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+    }
+
+
+
     public boolean someLibraryMethod() {
         return false;
     }
@@ -54,4 +124,19 @@ public class Library {
         int c = (int) finall;
         return c;
     };
+    public static String tally(List<String> list){
+        if(list.size() == 0 )return "No Votes";
+        Map<String, Long> counts =
+                list.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+        // System.out.println(counts);
+        Map.Entry<String, Long> maxEntry = null;
+        for (Map.Entry<String, Long> entry : counts.entrySet())
+        {
+            if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0)
+            {
+                maxEntry = entry;
+            }
+        }
+        return maxEntry.getKey() + " received the most votes!";
+    }
 }

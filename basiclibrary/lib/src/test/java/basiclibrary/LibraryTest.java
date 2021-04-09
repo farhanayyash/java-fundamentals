@@ -4,8 +4,14 @@
 package basiclibrary;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 public class LibraryTest {
     @Test public void testSomeLibraryMethod() {
         Library classUnderTest = new Library();
@@ -44,5 +50,22 @@ public class LibraryTest {
                 {65, 56, 55, 52, 55, 62, 57}
         };
         assertEquals(57, classUnderTest.minAvg(arr));
+    }
+    @Test public void testgetmax() {
+        Library classUnderTest = new Library();
+        assertEquals(72, classUnderTest.getmax());
+    }
+    @Test public void testgetmin() {
+        Library classUnderTest = new Library();
+        assertEquals(51, classUnderTest.getmin());
+    }
+    @Test public void testgetall() {
+        Library classUnderTest = new Library();
+        assertEquals(51, classUnderTest.getall());
+    }
+    @Test public void Testtally() {
+        Library classUnderTest = new Library();
+        System.out.println(classUnderTest.tally(classUnderTest.votes).split(" ")[0]);
+        assertEquals("Bush",classUnderTest.tally(classUnderTest.votes).split(" ")[0]);
     }
 }
