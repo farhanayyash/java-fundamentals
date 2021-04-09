@@ -5,6 +5,53 @@ package basiclibrary;
 
 public class Library {
     public boolean someLibraryMethod() {
+        return false;
+    }
+    public boolean someLibraryMethod2() {
         return true;
     }
+    static int[] roll(int number) {
+        int max = 6;
+        int min = 1;
+        int[] FinalArray = new int[number];
+        for (int i = 0; i < FinalArray.length; i++) {
+            FinalArray[i] = (int) (Math.random() * (max-min+1)) + min;
+        }
+        return FinalArray;
+    }
+
+    public static boolean containsDuplicates  (String[] arr){
+        for(int i = 0 ; i < arr.length ; i++){
+            for(int j = i+1 ; j < arr.length ; j++){
+                if(arr[i] == arr[j]){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static double calculatingAverages (int[] arr){
+        double sum = 0;
+        for(int i = 0 ; i < arr.length ; i++){
+            sum += arr[i];
+        }
+        return (sum/arr.length);
+    }
+    public static int minAvg (int[][] arr){
+        double minArr = calculatingAverages(arr[0]);
+        int[] returnArr = arr[0];
+        for(int i = 0 ; i < arr.length ; i++){
+            double arrAvg = calculatingAverages(arr[i]);
+            if(minArr > arrAvg){
+                minArr = arrAvg;
+                returnArr = arr[i];
+
+            }
+        }
+
+        double finall = calculatingAverages(returnArr);
+        int c = (int) finall;
+        return c;
+    };
 }

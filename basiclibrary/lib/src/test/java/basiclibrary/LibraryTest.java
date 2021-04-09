@@ -9,6 +9,40 @@ import static org.junit.Assert.*;
 public class LibraryTest {
     @Test public void testSomeLibraryMethod() {
         Library classUnderTest = new Library();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+        assertFalse("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+    }
+    @Test public void testSomeLibraryMethod2() {
+        Library classUnderTest = new Library();
+        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod2());
+    }
+    @Test public void testRoll() {
+
+        Library classUnderTest = new Library();
+        int[] array = classUnderTest.roll(5);
+        assertEquals("An array containing five random numbers", 5,array.length);
+
+    }
+    @Test public void testContainsDuplicates() {
+        Library classUnderTest = new Library();
+        String arr[]={"1","2","3","3"};
+        String arr2[]={"1","2","3"};
+
+        assertTrue("It's should return 'true'", classUnderTest.containsDuplicates(arr));
+        assertFalse("It's should return 'true'", classUnderTest.containsDuplicates(arr2));
+    }
+    @Test public void testCalculatingAverages() {
+        Library classUnderTest = new Library();
+        int arr[]={2,2,2};
+        assertEquals(2,(int) classUnderTest.calculatingAverages(arr));
+    }
+    @Test public void testminAvg() {
+        Library classUnderTest = new Library();
+        int[][] arr = {
+                {20, 20, 20, 100, 100, 100, 100},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        assertEquals(57, classUnderTest.minAvg(arr));
     }
 }
