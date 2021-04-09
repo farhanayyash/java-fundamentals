@@ -45,4 +45,16 @@ public class LibraryTest {
         };
         assertEquals(57, classUnderTest.minAvg(arr));
     }
+    @Test public void testgetmax() {
+        Library classUnderTest = new Library();
+        assertEquals(72, classUnderTest.getmax());
+    }
+    @Test public void testgetmin() {
+        Library classUnderTest = new Library();
+        assertEquals(51, classUnderTest.getmin());
+    }
+    @Test public void testgetall() {
+        Library classUnderTest = new Library();
+        assertEquals(51, classUnderTest.getall());
+    }
 }
