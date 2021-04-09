@@ -4,6 +4,7 @@
 package basiclibrary;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.*;
 
@@ -57,6 +58,19 @@ public class Library {
             {55, 54, 60, 53, 59, 57, 61},
             {65, 56, 55, 52, 55, 62, 57}
     };
+    public static List<String> votes = new ArrayList<>();
+
+    public Library(){
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+    }
 
 
 
@@ -110,4 +124,19 @@ public class Library {
         int c = (int) finall;
         return c;
     };
+    public static String tally(List<String> list){
+        if(list.size() == 0 )return "No Votes";
+        Map<String, Long> counts =
+                list.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+        // System.out.println(counts);
+        Map.Entry<String, Long> maxEntry = null;
+        for (Map.Entry<String, Long> entry : counts.entrySet())
+        {
+            if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0)
+            {
+                maxEntry = entry;
+            }
+        }
+        return maxEntry.getKey() + " received the most votes!";
+    }
 }

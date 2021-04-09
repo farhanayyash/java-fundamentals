@@ -4,8 +4,14 @@
 package basiclibrary;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 public class LibraryTest {
     @Test public void testSomeLibraryMethod() {
         Library classUnderTest = new Library();
@@ -56,5 +62,10 @@ public class LibraryTest {
     @Test public void testgetall() {
         Library classUnderTest = new Library();
         assertEquals(51, classUnderTest.getall());
+    }
+    @Test public void Testtally() {
+        Library classUnderTest = new Library();
+        System.out.println(classUnderTest.tally(classUnderTest.votes).split(" ")[0]);
+        assertEquals("Bush",classUnderTest.tally(classUnderTest.votes).split(" ")[0]);
     }
 }
